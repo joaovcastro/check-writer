@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import TextField from '@material-ui/core/TextField';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import convertNumber from 'CheckWriter/CheckWriter';
+import Typography from '@material-ui/core/Typography';
+import convertNumber from './CheckWriter/CheckWriter';
 
 class App extends Component {
   constructor(props) {
@@ -23,7 +24,9 @@ class App extends Component {
           <Grid item xs={2} />
           <Grid item xs={8}>
             <Paper elevation={4}>
-              <h1> Enter an amount between 0.0 and 999 999.99 </h1>
+              <Typography variant="title" gutterBottom>
+                Enter an amount between 0.0 and 999 999.99
+              </Typography>
               <TextField
                 id="euro-amount"
                 onChange={this.handleChange}
