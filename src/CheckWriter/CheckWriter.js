@@ -1,6 +1,3 @@
-import React, { Component } from 'react';
-import './App.css';
-
 const unitsAndTeens = ['zero', 'one', 'two', 'three',
   'four', 'five', 'six', 'seven', 'eight', 'nine',
   'ten', 'eleven', 'twelve', 'thriteen', 'fourteen',
@@ -37,23 +34,21 @@ const numberToWords = (number) => {
 const convertNumber = (number) => {
   if (number === "") return number;
 
-  const input = number.split('.');
-  console.log(input);
-
   // Convert euros
+  const input = number.split('.');
   if (input[0].length > 6) return 'The amount must be smaller than one million euros';
 
   let result = numberToWords(Number(input[0]));
-  result === 'one' ? result += ' euro' : result += ' euros';
+  result === 'one' ? result += ' Euro' : result += ' Euros';
 
   // Convert cents
   if (input[1] && input[1] !== "") {
     let decimalsStr = input[1];
-    if (decimalsStr.length == 1) decimalsStr += '0';
+    if (decimalsStr.length === 1) decimalsStr += '0';
     // Ignore amounts smaller than cents
     else decimalsStr = decimalsStr.substr(0, 2);
 
-    const cents = numberToWords(parseInt(decimalsStr));
+    const cents = numberToWords(Number(decimalsStr));
 
     cents === 'one'
       ? result += ' and ' + cents + ' cent'
@@ -61,31 +56,7 @@ const convertNumber = (number) => {
   } else {
     result += ' and zero cents';
   }
-  return result;
+  return result.slice(0, 1).toUpperCase() + result.slice(1);
 }
 
-
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      numberInWords: '',
-    }
-  }
-
-  handleChange = (event) => {
-    this.setState({ numberInWords: convertNumber(event.target.value) });
-  }
-
-  render() {
-    return (
-      <div className="App">
-        <h1> Enter an amount between 0.0 and 999 999.99 </h1>
-        <input onChange={this.handleChange} />
-        <h1> {this.state.numberInWords} </h1>
-      </div>
-    );
-  }
-}
-
-export default App;
+export default convertNumber;
