@@ -37,23 +37,27 @@ const numberToWords = (number) => {
 const convertNumber = (number) => {
   if (number === "") return number;
 
-  // Treat euros
-  let result = numberToWords(Number(number.split('.')[0]));
+  const input = number.split('.');
+  console.log(input);
+
+  // Convert euros
+  if (input[0].length > 6) return 'The amount must be smaller than one million euros';
+
+  let result = numberToWords(Number(input[0]));
   result === 'one' ? result += ' euro' : result += ' euros';
 
-  // treat cents
-  const decimals = number.split('.');
-
-  if (decimals.length > 1 && decimals[1] !== "") {
-    let decimalsStr = decimals[1];
+  // Convert cents
+  if (input[1] && input[1] !== "") {
+    let decimalsStr = input[1];
     if (decimalsStr.length == 1) decimalsStr += '0';
+    // Ignore amounts smaller than cents
     else decimalsStr = decimalsStr.substr(0, 2);
 
-    const decs = numberToWords(parseInt(decimalsStr));
+    const cents = numberToWords(parseInt(decimalsStr));
 
-    decs === 'one'
-      ? result += ' and ' + decs + ' cent'
-      : result += ' and ' + decs + ' cents';
+    cents === 'one'
+      ? result += ' and ' + cents + ' cent'
+      : result += ' and ' + cents + ' cents';
   } else {
     result += ' and zero cents';
   }
@@ -76,7 +80,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1> Enter a number between 0.0 and 999 999.99 </h1>
+        <h1> Enter an amount between 0.0 and 999 999.99 </h1>
         <input onChange={this.handleChange} />
         <h1> {this.state.numberInWords} </h1>
       </div>
