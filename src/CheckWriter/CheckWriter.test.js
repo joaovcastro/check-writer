@@ -30,4 +30,9 @@ describe('Check Writer', () => {
     const result = '';
     expect(convertNumber('')).toEqual(result);
   })
+
+  test('Characters', async () => {
+    const result = 'Please enter a number';
+    expect(convertNumber('qwerty')).toEqual(result);
+  })
 })
