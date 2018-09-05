@@ -4,42 +4,39 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import convertNumber from './CheckWriter/CheckWriter';
+import { withStateHandlers } from 'recompose';
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      numberInWords: '',
-    }
-  }
+const App = ({ numberInWords, handleChange, }) =>
+  <div className="App">
+    <Grid container>
+      <Grid item xs={2} />
+      <Grid item xs={8}>
+        <Paper elevation={4}>
+          <Typography variant="title" gutterBottom>
+            Enter an amount between 0.0 and 999 999.99
+                 </Typography>
+          <TextField
+            id="euro-amount"
+            fullWidth
+            margin="normal"
+            onChange={(event) => handleChange(event)}
+          />
+          <Typography variant="title" gutterBottom>
+            {numberInWords || ""}
+          </Typography>
+        </Paper>
+      </Grid>
+      <Grid item xs={2} />
+    </Grid>
+  </div>;
 
-  handleChange = (event) => {
-    this.setState({ numberInWords: convertNumber(event.target.value) });
-  }
 
-  render() {
-    return (
-      <div className="App">
-        <Grid container>
-          <Grid item xs={2} />
-          <Grid item xs={8}>
-            <Paper elevation={4}>
-              <Typography variant="title" gutterBottom>
-                Enter an amount between 0.0 and 999 999.99
-              </Typography>
-              <TextField
-                id="euro-amount"
-                onChange={this.handleChange}
-                margin="normal"
-              />
-              <h1> {this.state.numberInWords} </h1>
-            </Paper>
-          </Grid>
-          <Grid item xs={2} />
-        </Grid>
-      </div>
-    );
-  }
-}
-
-export default App;
+export default withStateHandlers(
+  {
+    numberInWords: '',
+  }, {
+    handleChange: () => (event) => ({
+      numberInWords: convertNumber(event.target.value),
+    }),
+  },
+)(App);

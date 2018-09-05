@@ -32,6 +32,7 @@ const numberToWords = (number) => {
 }
 
 const convertNumber = (number) => {
+  
   if (number === "") return number;
 
   // Convert euros
