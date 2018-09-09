@@ -22,7 +22,7 @@ describe('Check Writer', () => {
   })
 
   test('Fail case', async () => {
-    const result = 'The amount must be smaller than one million euros';
+    const result = 'The amount must be smaller than one million Euros';
     expect(convertNumber('666666666')).toEqual(result);
   })
 

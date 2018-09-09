@@ -34,8 +34,8 @@ const numberToWords = (number) => {
 const convertNumber = (number) => {
   console.log('Input:', number);
 
-  if (number === "") return number;
-  if (!(Number(number))) return 'Please enter a number';
+  if (!(Number(number))) console.log('Please enter a number');
+  return;
   
   // Convert euros
   const input = number.split('.');
