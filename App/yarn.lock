@@ -126,6 +126,13 @@
     recompose "^0.29.0"
     warning "^4.0.1"
 
+"@material-ui/icons@^3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@material-ui/icons/-/icons-3.0.1.tgz#671fb3d04dcaf9351dbbd2bf82ae2ae72e3d93cd"
+  dependencies:
+    "@babel/runtime" "7.0.0"
+    recompose "^0.29.0"
+
 "@types/jss@^9.5.3":
   version "9.5.5"
   resolved "https://registry.yarnpkg.com/@types/jss/-/jss-9.5.5.tgz#57ed99ae768c203677cd64e0ce0df02c74075bf8"
@@ -3297,6 +3304,10 @@ he@1.1.x:
   version "1.1.1"
   resolved "http://npmregistry.trialbee.xyz:4873/he/-/he-1.1.1.tgz#93410fd21b009735151f8868c2f271f3427e23fd"
 
+highlight.js@^9.11.0:
+  version "9.12.0"
+  resolved "https://registry.yarnpkg.com/highlight.js/-/highlight.js-9.12.0.tgz#e6d9dbe57cbefe60751f02af336195870c90c01e"
+
 hmac-drbg@^1.0.0:
   version "1.0.1"
   resolved "http://npmregistry.trialbee.xyz:4873/hmac-drbg/-/hmac-drbg-1.0.1.tgz#d2745701025a6c775a6c545793ed502fc0c649a1"
@@ -5893,6 +5904,12 @@ react-event-listener@^0.6.2:
     "@babel/runtime" "7.0.0-rc.1"
     prop-types "^15.6.0"
     warning "^4.0.1"
+
+react-highlight@^0.12.0:
+  version "0.12.0"
+  resolved "https://registry.yarnpkg.com/react-highlight/-/react-highlight-0.12.0.tgz#34de986a0bfdf228904d0c269b69538d95b35802"
+  dependencies:
+    highlight.js "^9.11.0"
 
 react-is@^16.3.1:
   version "16.4.2"

@@ -32,13 +32,14 @@ const numberToWords = (number) => {
 }
 
 const convertNumber = (number) => {
+  console.log('Input:', number);
 
   if (number === "") return number;
   if (!(Number(number))) return 'Please enter a number';
   
   // Convert euros
   const input = number.split('.');
-  if (input[0].length > 6) return 'The amount must be smaller than one million euros';
+  if (input[0].length > 6) return 'The amount must be smaller than one million Euros';
 
   let result = numberToWords(Number(input[0]));
   result === 'one' ? result += ' Euro' : result += ' Euros';
@@ -58,7 +59,7 @@ const convertNumber = (number) => {
   } else {
     result += ' and zero cents';
   }
-  return result.slice(0, 1).toUpperCase() + result.slice(1);
+  console.log(result.slice(0, 1).toUpperCase() + result.slice(1));
 }
 
-export default convertNumber;
+convertNumber(process.argv[2]);
