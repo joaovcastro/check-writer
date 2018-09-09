@@ -3,11 +3,9 @@ import TextField from '@material-ui/core/TextField';
 import Paper from '@material-ui/core/Paper';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import Dialog from '@material-ui/core/Dialog';
-import DialogTitle from '@material-ui/core/DialogTitle';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import convertNumber from './CheckWriter/CheckWriter';
+import convertNumber from './Scripts/CheckWriter/CheckWriter';
 import { withStateHandlers } from 'recompose';
 import Algorithm from './containers/Algorithm/'
 import Code from '@material-ui/icons/Code';
@@ -43,62 +41,69 @@ const DialogHeader = styled(AppBar)`
   background-color: #70798C!important;
 `;
 
-const DialogTextInput = styled(TextField)`
-  font-size: 20px!important;
-`;
-
-const WhiteTxt = styled(Typography)`
+const WhiteText = styled(Typography)`
   color: white!important;
 `;
 
 const MainTextLine = styled.div`
-padding-bottom: 10px!important;
+  padding-bottom: 10px!important;
 `;
 
-
 const App = ({ numberInWords, handleChange, open, handleOnOpen, handleClose }) => {
-  return (<Fragment>
-    <CheckWriter elevation={4} className="checkwriter">
-      <DialogHeader position="static">
-        <Toolbar>
-          <WhiteTxt variant="headline" color="textSecondary">
-            Check Writer
-          </WhiteTxt>
-        </Toolbar>
-      </DialogHeader>
-      <DialogContent className="container">
-        <DialogMainText variant="title" gutterBottom>
-          <MainTextLine>Enter an amount </MainTextLine>
-          between € 0.00 and € 999 999.99
+  return (
+    <Fragment>
+      <CheckWriter
+        elevation={4}
+      >
+        <DialogHeader
+          position="static"
+        >
+          <Toolbar>
+            <WhiteText
+              variant="headline"
+              color="textSecondary"
+            >
+              Check Writer
+          </WhiteText>
+          </Toolbar>
+        </DialogHeader>
+        <DialogContent>
+          <DialogMainText
+            variant="title"
+            gutterBottom
+          >
+            <MainTextLine>
+              Enter an amount
+            </MainTextLine>
+            between € 0.00 and € 999 999.99
         </DialogMainText>
-        <DialogTextInput
-          fullWidth
-          margin="normal"
-          onChange={(event) => handleChange(event)}
-        />
-        <DialogSecondaryText variant="title" gutterBottom className="amount">
-          {numberInWords}
-        </DialogSecondaryText>
-      </DialogContent >
-    </CheckWriter>
-    <Algorithm
-      open={open}
-      onClose={handleClose}
-      className="bitch"
-    />
-    <InfoButton
-      variant="fab"
-      color="secondary"
-      className="hbutton"
-      onClick={handleOnOpen}
-    >
-      <Code />
-    </InfoButton>
-  </Fragment>
+          <TextField
+            fullWidth
+            margin="normal"
+            onChange={(event) => handleChange(event)}
+          />
+          <DialogSecondaryText
+            variant="title"
+            gutterBottom
+          >
+            {numberInWords}
+          </DialogSecondaryText>
+        </DialogContent >
+      </CheckWriter>
+      <Algorithm
+        open={open}
+        onClose={handleClose}
+      />
+      <InfoButton
+        variant="fab"
+        color="secondary"
+        onClick={handleOnOpen}
+      >
+        <Code />
+      </InfoButton>
+    </Fragment>
   );
 }
-
-// Add proptypes
 
 export default withStateHandlers(
   {
