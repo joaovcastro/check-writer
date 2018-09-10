@@ -7,3 +7,8 @@ body {
   align-items: center;
   background-color: #282c34;  
 }
+
+/* Couldn't find a way to do it with styled compoennts */
+.user-input input {
+  font-size: 20px;
+}

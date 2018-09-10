@@ -36,10 +36,10 @@ const convertNumber = (number) => {
   if (number === "") return number;
   if (!(Number(number))) return 'Please enter a number';
   
-  // Convert euros
   const input = number.split('.');
+  
+  // Convert euros
   if (input[0].length > 6) return 'The amount must be smaller than one million Euros';
-
   let result = numberToWords(Number(input[0]));
   result === 'one' ? result += ' Euro' : result += ' Euros';
 

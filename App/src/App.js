@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import TextField from '@material-ui/core/TextField';
 import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
@@ -9,6 +10,7 @@ import convertNumber from './Scripts/CheckWriter/CheckWriter';
 import { withStateHandlers } from 'recompose';
 import Algorithm from './containers/Algorithm/'
 import Code from '@material-ui/icons/Code';
+import EuroSymbol from '@material-ui/icons/EuroSymbol';
 import styled from 'styled-components';
 
 const CheckWriter = styled(Paper)`
@@ -27,7 +29,8 @@ const DialogMainText = styled(Typography)`
 `;
 
 const DialogSecondaryText = styled(Typography)`
-  margin-top: 30px!important;
+  margin-top: 15px!important;  
+  line-height: 30px!important;
 `;
 
 const InfoButton = styled(Button)`
@@ -38,7 +41,7 @@ const InfoButton = styled(Button)`
 `;
 
 const DialogHeader = styled(AppBar)`
-  background-color: #70798C!important;
+  background-color: #607D8B!important;
 `;
 
 const WhiteText = styled(Typography)`
@@ -59,12 +62,24 @@ const App = ({ numberInWords, handleChange, open, handleOnOpen, handleClose }) =
           position="static"
         >
           <Toolbar>
-            <WhiteText
-              variant="headline"
-              color="textSecondary"
+            <Grid
+              container
+              spacing={8}
+              justify="space-between"
+              alignItems="center"
             >
-              Check Writer
-          </WhiteText>
+              <Grid item>
+                <WhiteText
+                  variant="headline"
+                  color="textSecondary"
+                >
+                  Check Writer
+                </WhiteText>
+              </Grid>
+              <Grid item>
+                <EuroSymbol />
+              </Grid>
+            </Grid>
           </Toolbar>
         </DialogHeader>
         <DialogContent>
@@ -80,7 +95,9 @@ const App = ({ numberInWords, handleChange, open, handleOnOpen, handleClose }) =
           <TextField
             fullWidth
             margin="normal"
+            className="user-input"
             onChange={(event) => handleChange(event)}
+
           />
           <DialogSecondaryText
             variant="title"

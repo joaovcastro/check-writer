@@ -10,8 +10,8 @@ import Highlight from 'react-highlight';
 
 import styled from 'styled-components';
 
-const PopUpHeader = styled(AppBar) `
-  background-color: #923eab!important;
+const PopUpHeader = styled(AppBar)`
+  background-color: #673AB7!important;
   margin-bottom: -25px;
 `;
 
@@ -22,9 +22,9 @@ const PopUpDialog = styled(Dialog)`
 
 const Algorithm = ({ handleClose, open, onClose }) =>
   <PopUpDialog
-    onClose={handleClose}
-    onClickAway={handleClose}
     open={open}
+    onClose={handleClose}
+    onBackdropClick={handleClose}
     className="algorithm"
     aria-labelledby="simple-dialog-title"
   >
@@ -37,13 +37,13 @@ const Algorithm = ({ handleClose, open, onClose }) =>
           alignItems="center"
         >
           <Grid item>
-            <Typography variant="headline" style={{ color: "white"}}>
+            <Typography variant="headline" style={{ color: "white" }}>
               Algorithm
         </Typography>
           </Grid>
           <Grid item>
             <Button size="small" onClick={onClose}>
-              <Close style={{ color: "white"}}/>
+              <Close style={{ color: "white" }} />
             </Button>
           </Grid>
         </Grid>
