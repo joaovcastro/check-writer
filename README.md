@@ -1,5 +1,5 @@
 # Check Writer
-[image]: http://image.prntscr.com/image/txhYSp68QzWQbn4-oikc0A.png "Check Writer Screenshot"
+![app](http://image.prntscr.com/image/txhYSp68QzWQbn4-oikc0A.png)
 
 Check writer is a program that given a Euro amount between 0 and 999,999.00 the program outputs a worded representation of an Euro amount on a check.
 
